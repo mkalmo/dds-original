@@ -1,2 +1,41 @@
 
 make -C examples -f Makefiles/Makefile_linux SolveBoard1
+
+
+Here are the meanings of the parameters for the SolveBoard() function, based on the dll.h header file:
+
+   1. `dl` (struct deal): Represents the current state of the bridge deal.
+       * trump: The trump suit (0=spades, 1=hearts, 2=diamonds, 3=clubs, 4=no trump).
+       * first: The player on lead (0=North, 1=East, 2=South, 3=West).
+       * currentTrickSuit[3]: An array storing the suits of cards already played in the current trick (if any).
+       * currentTrickRank[3]: An array storing the ranks of cards already played in the current trick (if any).
+       * remainCards[DDS_HANDS][DDS_SUITS]: A 2D array representing the remaining cards in each of the four hands
+         (North, East, South, West) for each of the four suits. Each entry is a bitmask of the ranks held.
+
+   2. `target` (int): Specifies the target number of tricks to achieve.
+       * -1: Solve for the maximum number of tricks possible.
+       * 0-13: Solve to achieve exactly this many tricks.
+
+   3. `solutions` (int): Controls the type of solution information returned.
+       * 1: Return only the best move.
+       * 2: Return all moves that achieve the same score as the best move.
+       * 3: Return all legal moves.
+
+   4. `mode` (int): Influences the search algorithm's behavior.
+       * 0: Normal search.
+       * 1: Aggressive search (potentially faster, more memory usage).
+       * 2: Defensive search (potentially slower, less memory usage).
+
+   5. `futp` (struct futureTricks\*): A pointer to a futureTricks structure where the detailed results of the solve
+      will be stored.
+       * nodes: The number of nodes searched during the solve.
+       * cards: The number of cards in the optimal line of play.
+       * suit[13]: An array of suits for the optimal line of play.
+       * rank[13]: An array of ranks for the optimal line of play.
+       * equals[13]: A bitmask indicating cards that yield the same result as the optimal play.
+       * score[13]: The score (tricks taken) for each card in the optimal line of play.
+
+   6. `threadIndex` (int): The index of the thread to be used for the computation. In SolveBoard1.cpp, it's set to 0,
+      typically indicating the main thread or a single-threaded operation.
+
+

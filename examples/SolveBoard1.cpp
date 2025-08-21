@@ -89,8 +89,8 @@ int main()
     for (int s = 0; s < DDS_SUITS; s++)
       dl.remainCards[h][s] = holdings[s][h];
 
-  target = -1;
-  solutions = 2; // 2 - Return all moves with the same score as the best move
+  target = -1; // -1: Solve for the maximum number of tricks possible.
+  solutions = 2; // 2: Return all moves with the same score as the best move
   mode = 0;
   res = SolveBoard(dl, target, solutions, mode, &fut, threadIndex);
 
