@@ -28,7 +28,7 @@ THREADING	= $(THR_BOOST) $(THR_OPENMP) $(THR_STL)
 CC_BOOST_LINK	= -lboost_system -lboost_thread
 
 THREAD_COMPILE	= -fopenmp
-THREAD_LINK	= $(CC_BOOST_LINK)
+THREAD_LINK	= $(CC_BOOST_LINK) 
 
 # 2. The small memory option, which causes DDS to consume a lot less
 # memory and to run somewhat more slowly.

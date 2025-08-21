@@ -47,20 +47,21 @@ STATIC_LIB	= lib$(DLLBASE).a
 COMMON_SOURCE_FILES 	=	\
 	hands.cpp
 
-ALL_EXAMPLE_FILES	=	\
-	AnalysePlayBin		\
-	AnalysePlayPBN		\
-	AnalyseAllPlaysBin	\
-	AnalyseAllPlaysPBN	\
-	CalcDDtable.cpp		\
-	CalcDDtablePBN.cpp	\
-	CalcAllTables.cpp	\
-	CalcAllTablesPBN.cpp	\
-	DealerPar.cpp		\
-	Par.cpp			\
-	SolveBoard.cpp		\
-	SolveBoardPBN.cpp	\
-	SolveAllBoards.cpp
+ALL_EXAMPLE_FILES =	\
+		AnalysePlayBin \
+		AnalysePlayPBN \
+		AnalyseAllPlaysBin \
+		AnalyseAllPlaysPBN \
+		CalcDDtable.cpp \
+		CalcDDtablePBN.cpp \
+		CalcAllTables.cpp \
+		CalcAllTablesPBN.cpp \
+		DealerPar.cpp \
+		Par.cpp \
+		SolveBoard.cpp \
+		SolveBoard1.cpp \
+		SolveBoardPBN.cpp \
+		SolveAllBoards.cpp
 
 LIB_FLAGS	= -L. -l$(DLLBASE)
 
@@ -102,6 +103,9 @@ Par:	$(OBJ_FILES) Par.o
 
 SolveBoard:	$(OBJ_FILES) SolveBoard.o
 	$(CC) $(CC_FULL_FLAGS) $(LD_FLAGS) $(OBJ_FILES) SolveBoard.o $(LIB_FLAGS) -o SolveBoard
+
+SolveBoard1:	SolveBoard1.o
+	$(CC) $(CC_FULL_FLAGS) $(LD_FLAGS) SolveBoard1.o $(LIB_FLAGS) -o SolveBoard1
 
 SolveBoardPBN:	$(OBJ_FILES) SolveBoardPBN.o
 	$(CC) $(CC_FULL_FLAGS) $(LD_FLAGS) $(OBJ_FILES) SolveBoardPBN.o $(LIB_FLAGS) -o SolveBoardPBN
